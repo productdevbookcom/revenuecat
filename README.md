@@ -1,43 +1,74 @@
-# Typescript Bundle Template
+# RevenueCat REST API
 
-![Typescript Bundle Template](https://github.com/productdevbookcom/assets/blob/main/ts-bundle-template.jpg?raw=true)
+![RevenueCat](https://github.com/productdevbookcom/revenuecat/blob/main/.github/assets/revenuecat.png?raw=true)
 
+ <p>
+    <a href="https://www.npmjs.com/package/revenuecat"><img src="https://img.shields.io/npm/v/revenuecat.svg?style=flat&colorA=002438&colorB=28CF8D" alt="Version"></a>
+    <a href="https://www.npmjs.com/package/revenuecat"><img src="https://img.shields.io/npm/dm/revenuecat.svg?style=flat&colorA=002438&colorB=28CF8D" alt="Downloads"></a>
+    <a href="./LICENSE"><img src="https://img.shields.io/github/license/huntersofbook/huntersofbook.svg?style=flat&colorA=002438&colorB=28CF8D" alt="License"></a>
+  </p>
 
-This is a template for creating a Typescript bundle. It is based on the [Typescript](https://www.typescriptlang.org/) compiler with the [Tsup](https://github.com/egoist/tsup) bundler.
-
-## Features
-
-- [x] [Typescript](https://www.typescriptlang.org/)
-- [x] [Tsup](https://github.com/egoist/tsup)
-- [x] [ESLint](https://eslint.org/) with [Antfu's ESLint Config](https://github.com/antfu/eslint-config)
-- [x] [Bumpp](https://github.com/antfu/bumpp) github changelog generator
-- [x] [Vitest](https://vitest.dev/)
-- [x] [Pnpm](https://pnpm.io/)
-- [x] [GitHub Actions]()
-- [x] [NPM Local Registry]()
-- [x] [Renovate]()
-
+## Installation
+```bash
+pnpm install revenuecat
+```
 
 ## Usage
+```ts
+import { Revenuecat } from 'revenuecat'
+import * as dotenv from 'dotenv'
 
-1. To use this template, click the "Use this template" button above.
-2. Clone the repository to your local machine.
-3. Run `pnpm install` to install the dependencies.
-4. Run `pnpm build` to build the bundle.
-5. Run `pnpm start` to start the bundle.
-6. Run `pnpm lint` to lint the code. (You can also run `pnpm lint:fix` to fix the linting errors.)
-7. Run `pnpm test` to run the tests. (You can also run `pnpm test:watch` to run the tests in watch mode.)
-8. Run `pnpm release` to bump the version. Terminal will ask you to select the version type. And then it will automatically commit and push the changes. GitHub Actions will automatically publish git tags. NPM local registry will automatically publish the package.
+dotenv.config({
+  path: '.env',
+})
 
-## Configuration
+const revenuecat = new Revenuecat({
+  secretKey: process.env.secretKey as string,
+  iosKey: process.env.iosKey as string,
+  androidKey: process.env.androidKey as string,
+})
 
-### Renovate
+const userId = '$RCAnonymousID:17c0ff7b3c70462'
 
-[Setup Github App](https://github.com/apps/renovate) for Renovate.
+await revenuecat
+  .getSubscriptions({ userId })
+  .then(res => console.log(res.subscriber, 'getSubscriptions'))
 
-### TS Config Base 
+await revenuecat
+  .getOfferings({ userId, platform: 'ios' })
+  .then(res => console.log(res.offerings, 'getOfferings'))
 
-(tsconfig.json)[https://github.com/tsconfig/bases/tree/main/bases] is used as the base config for the Typescript compiler.
+await revenuecat
+  .postSubscriptionsAttributes({
+    userId,
+    data: {
+      attributes: {
+        $email: {
+          value: 'asdasd',
+        },
+      },
+    },
+  }).then(res => console.log(res, 'postSubscriptionsAttributes'))
+```
+
+### TODO
+
+- [ ] Add more methods - https://www.revenuecat.com/reference/basic
+- [ ] Add more tests
+- [ ] Add more examples
+
+### Add more methods
+- [ ] [Delete Subscriber](https://www.revenuecat.com/reference/delete-subscriber)
+- [ ] [subscribersattribution](https://www.revenuecat.com/reference/subscribersattribution)
+- [ ] [Override a Customer's Current Offering](https://www.revenuecat.com/reference/override-offering)
+- [ ] [Remove a Customer's Current Offering Override](https://www.revenuecat.com/reference/delete-offering-override)
+- [ ] [Create a Purchase](https://www.revenuecat.com/reference/receipts)
+- [ ] [Google Play: Refund and Revoke Purchase](https://www.revenuecat.com/reference/refund-a-google-subscription)
+- [ ] [Google Play: Refund and Revoke Subscription](https://www.revenuecat.com/reference/revoke-a-google-subscription)
+- [ ] [Google Play: Defer a Subscription](https://www.revenuecat.com/reference/defer-a-google-subscription)
+- [ ] [Grant a Promotional Entitlement](https://www.revenuecat.com/reference/grant-a-promotional-entitlement)
+- [ ] [Revoke Promotional Entitlements](https://www.revenuecat.com/reference/revoke-promotional-entitlements)
+
 
 ## Sponsors
 
@@ -50,4 +81,4 @@ This is a template for creating a Typescript bundle. It is based on the [Typescr
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+MIT License © 2022-PRESENT [productdevbook](https://github.com/productdevbook)
