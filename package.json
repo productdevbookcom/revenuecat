@@ -1,6 +1,6 @@
 {
   "name": "revenuecat",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "packageManager": "pnpm@8.0.0",
   "description": "Revenuecat Rest API for Node.js and TypeScript (Unofficial)",
   "author": "Mehmet - productdevbook <hi@productdevbook.com>",
