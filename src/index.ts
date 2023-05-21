@@ -1,7 +1,5 @@
-export function handler(event: any, context: any, callback: any) {
-  console.log('Hello World')
-  callback(null, {
-    statusCode: 200,
-    body: 'Hello World',
-  })
-}
+import Revenuecat from './client/revenuecat'
+
+export * from './types'
+export { Revenuecat }
+export default Revenuecat

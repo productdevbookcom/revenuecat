@@ -1,19 +1,21 @@
 {
-  "name": "ts-bundle-template",
+  "name": "revenuecat",
   "version": "0.0.0",
   "packageManager": "pnpm@8.0.0",
-  "description": "add description",
-  "author": "add author",
+  "description": "Revenuecat Rest API for Node.js and TypeScript (Unofficial)",
+  "author": "Mehmet - productdevbook <hi@productdevbook.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/productdevbook",
-  "homepage": "https://github.com/productdevbookcom/ts-bundle-template",
+  "homepage": "https://github.com/productdevbookcom/revenuecat",
   "repository": {
     "type": "git",
-    "url": "https://github.com/productdevbookcom/ts-bundle-template.git"
+    "url": "https://github.com/productdevbookcom/revenuecat.git"
   },
-  "bugs": "https://github.com/productdevbookcom/ts-bundle-template/issues",
+  "bugs": "https://github.com/productdevbookcom/revenuecat/issues",
   "keywords": [
-    "add keywords"
+    "revenuecat",
+    "revenuecat typescript",
+    "typescript"
   ],
   "exports": {
     ".": {
@@ -41,6 +43,9 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest",
     "test:watch": "vitest --watch"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.6",
