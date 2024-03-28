@@ -48,14 +48,14 @@
     "axios": "^1.4.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.38.6",
+    "@antfu/eslint-config": "^2.11.4",
     "@vitest/coverage-c8": "^0.31.0",
     "bumpp": "^9.1.0",
     "eslint": "^8.40.0",
-    "tsup": "^7.2.0",
+    "tsup": "^8.0.2",
     "typescript": "^5.0.4",
     "vite": "^4.3.5",
-    "vitest": "^0.31.0"
+    "vitest": "^1.4.0"
   },
   "publishConfig": {
     "access": "public"
